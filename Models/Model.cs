@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 namespace EFGetStarted.AspNet5.NewDb.Models
 {
-    public class BloggingContext : DbContext
+    public class ContactoContext : DbContext
     {
-        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Contacto> Contactos { get; set; }
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Make Blog.Url required
-            modelBuilder.Entity<Blog>()
-                .Property(b => b.Url)
+            modelBuilder.Entity<Contacto>()
+                .Property(b => b.Nombre)
                 .IsRequired();
         }
     }
 
-    public class Blog
+    public class Contacto
     {
-        public int BlogId { get; set; }
-        public string Url { get; set; }
-
+        public int ContactoId { get; set; }
+        public string Nombre { get; set; }
+        public string Telefono { get; set; }
         public List<Post> Posts { get; set; }
     }
 
@@ -31,7 +31,7 @@ namespace EFGetStarted.AspNet5.NewDb.Models
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
+        public int ContactoId { get; set; }
+        public Contacto Contacto { get; set; }
     }
 }

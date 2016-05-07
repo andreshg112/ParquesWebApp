@@ -4,18 +4,18 @@ using System.Linq;
 
 namespace EFGetStarted.AspNet5.NewDb.Controllers
 {
-    public class BlogsController : Controller
+    public class ContactosController : Controller
     {
-        private BloggingContext _context;
+        private ContactoContext _context;
 
-        public BlogsController(BloggingContext context)
+        public ContactosController(ContactoContext context)
         {
             _context = context;
         }
 
         public IActionResult Index()
         {
-            return View(_context.Blogs.ToList());
+            return View(_context.Contactos.ToList());
         }
 
         public IActionResult Create()
@@ -25,16 +25,16 @@ namespace EFGetStarted.AspNet5.NewDb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Blog blog)
+        public IActionResult Create(Contacto contacto)
         {
             if (ModelState.IsValid)
             {
-                _context.Blogs.Add(blog);
+                _context.Contactos.Add(contacto);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(blog);
+            return View(contacto);
         }
 
     }

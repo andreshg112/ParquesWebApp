@@ -5,27 +5,28 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using EFGetStarted.AspNet5.NewDb.Models;
 
-namespace SampleWebApp.Migrations.Blogging
+namespace SampleWebApp.Migrations.Contacto
 {
-    [DbContext(typeof(BloggingContext))]
-    [Migration("20160506051956_MyFirstMigration")]
+    [DbContext(typeof(ContactoContext))]
+    [Migration("20160507020208_MyFirstMigration")]
     partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348");
 
-            modelBuilder.Entity("EFGetStarted.AspNet5.NewDb.Models.Blog", b =>
+            modelBuilder.Entity("EFGetStarted.AspNet5.NewDb.Models.Contacto", b =>
                 {
-                    b.Property<int>("BlogId")
+                    b.Property<int>("ContactoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Url")
+                    b.Property<string>("Nombre")
                         .IsRequired();
 
-                    b.HasKey("BlogId");
+                    b.Property<string>("Telefono");
+
+                    b.HasKey("ContactoId");
                 });
 
             modelBuilder.Entity("EFGetStarted.AspNet5.NewDb.Models.Post", b =>
@@ -33,7 +34,7 @@ namespace SampleWebApp.Migrations.Blogging
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BlogId");
+                    b.Property<int>("ContactoId");
 
                     b.Property<string>("Content");
 
@@ -44,9 +45,9 @@ namespace SampleWebApp.Migrations.Blogging
 
             modelBuilder.Entity("EFGetStarted.AspNet5.NewDb.Models.Post", b =>
                 {
-                    b.HasOne("EFGetStarted.AspNet5.NewDb.Models.Blog")
+                    b.HasOne("EFGetStarted.AspNet5.NewDb.Models.Contacto")
                         .WithMany()
-                        .HasForeignKey("BlogId");
+                        .HasForeignKey("ContactoId");
                 });
         }
     }
