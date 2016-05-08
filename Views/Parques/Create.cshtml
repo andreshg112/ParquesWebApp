@@ -1,0 +1,43 @@
+@model EFGetStarted.AspNet5.NewDb.Models.Parque
+
+@{
+    ViewBag.Title = "New Parque";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Parques" asp-action="Create" method="post" class="form-horizontal" role="form">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nombre" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <br>
+            <label asp-for="Barrio" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Barrio" class="form-control" />
+                <span asp-validation-for="Barrio" class="text-danger"></span>
+            </div>
+            <br>
+            <label asp-for="Direccion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <br>
+            <label asp-for="Area" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>

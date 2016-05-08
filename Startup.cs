@@ -34,7 +34,7 @@ namespace SampleWebApp
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
             Configuration["Data:DefaultConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/SampleWebApp.db";
-            Configuration["Data:ContactosConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/BD_Contactos.db";
+            Configuration["Data:ParquesConnection:ConnectionString"] = $@"Data Source={appEnv.ApplicationBasePath}/BaseDeDatos.db";
 
         }
 
@@ -49,8 +49,8 @@ namespace SampleWebApp
                 .AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlite(Configuration["Data:DefaultConnection:ConnectionString"]))
                 .AddSqlite()
-                .AddDbContext<ContactoContext>(options =>
-                    options.UseSqlite(Configuration["Data:ContactosConnection:ConnectionString"]));
+                .AddDbContext<ParqueContext>(options =>
+                    options.UseSqlite(Configuration["Data:ParquesConnection:ConnectionString"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
